@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <style>
+  #navbarV {
+    position: fixed;
+  }
+  body { 
+    padding-top: 60px;
+  }
+  #ConvexOptimizationProblem{
+    scroll-margin-top: 80px;
+  }
+  #Lagrangian{
+    scroll-margin-top: 80px;
+  }
+  #GradientDescentMethod{
+    scroll-margin-top: 80px;
+  }
+  #ProximalGradientMethod{
+    scroll-margin-top: 80px;
+  }
+  #ADMM{
+    scroll-margin-top: 80px;
+  }
+  </style>
+</head>
+
+<body id="BackToTop">
+
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="course.html">Study & Research</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="publication.html">Project & Publication</a>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" href="#" id="navbardrop" data-toggle="dropdown">More</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="forwardModel.html">Forward Model</a>
+          <a class="dropdown-item active" href="optimization.html">Optimization</a>
+          <a class="dropdown-item" href="machineLearning.html">Machine Learning</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        <div id="navbarV">
+          <ul>
+            <li><a href="#ConvexOptimizationProblem">Optimization Problem</a></li>
+            <li><a href="#Lagrangian">Lagrangian</a></li>
+            <li><a href="#GradientDescentMethod">Gradient Descent</a></li>
+            <li><a href="#ProximalGradientMethod">Proximal Gradient</a></li>
+            <li><a href="#ADMM">ADMM</a></li>
+            <li><a href="#References">References</a></li>
+            <li><a href="#BackToTop">Back To Top</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-10">
+        <div class="container p-3 my-3 border" id="ConvexOptimizationProblem">
+          <h1>Convex Optimization Problem</h1>
+          <h3>Standard Form</h3>
+          Convex Optimization Problem: Standard Form
+          <br>&nbsp &nbsp &nbsp &nbsp minimize \( f_0(x) \)
+          <br>&nbsp &nbsp &nbsp &nbsp subject to \( f_i(x) \le 0, i = 1,...,m \)
+          <br>where \( f_0(x),...,f_m((x) \) are convex functions.
+          <br>
+          <br>
+          <h3>Implicit Form</h3>
+          Convex Optimization Problem: Implicit Form
+          <br>&nbsp &nbsp &nbsp &nbsp minimize \( f(x) \)
+          <br>&nbsp &nbsp &nbsp &nbsp subject to \( x \in C \)
+          <br>where \( f(x) \) is a convex function and \( C \) is a convex set.
+          <br>
+          <br>
+          <h3>Examples of Convex Functions</h3>
+          <span style='font-size:20px; color:blue'>&#9656;</span>\( x \rightarrow ax+b \) is both convex and concave on \( R \) for all \( a, b \in R \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x \rightarrow |x|^p \) for \( p \ge 1 \) is convex on \( R \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x \rightarrow e^{ax} \) is convex on \( R \) for all \( a \in R \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>Every norm on \( R^n \) is convex e.g. \( ||x||_1 \) and \( ||x||_2 \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>Max: \( (x_1,...,x_n) \rightarrow max\{x_1,...,x_n\} \) is convex on \( R^n \)
+        </div>
+
+        <div class="container p-3 my-3 border" id="Lagrangian">
+          <h1>Lagrangian</h1>
+          <p>
+          The Lagrangian for this optimization problem is
+          <br>\( L(x,\lambda) = f_0(x)+\sum\limits_{i=1}^{m}\lambda_i f_i(x) \)
+          <br>\(\lambda_1, \lambda_2, ... \lambda_m\) are called Lagrangian multipliers (also called the dual variables).
+          </p>
+          <h3>Primal Form</h3>
+          <p>
+          Original optimization problem in primal form:
+          <br>\(p^* = \inf\limits_{x} \sup\limits_{\lambda\ge 0} L(x,\lambda)\)
+          </p>
+          <h3>Dual Form</h3>
+          <p>
+          Get the Lagrangian dual problem by “swapping the inf and the sup”:
+          <br>\(d^* = \sup\limits_{\lambda\ge 0} \inf\limits_{x} L(x,\lambda)\)
+          <br>We can show weak duality: \(p^* \ge d^*\) for any optimization problem.
+          <br>For convex problems, we often have strong duality: \(p^* = d^*\).
+          <br>The Lagrangian dual function (or just dual function) is
+          <br>\(g(\lambda) = \inf\limits_{x} L(x,\lambda) = \inf\limits_{x}(f_0(x)+\sum\limits_{i=1}^{m}\lambda_i f_i(x))\)
+          <br>The Lagrangian dual problem is a search for best lower bound on \(p^*\):
+          <br>&nbsp &nbsp &nbsp &nbspmaximize \(g(\lambda)\)
+          <br>&nbsp &nbsp &nbsp &nbspsubject to \(\lambda \ge 0\)
+          <br>Lagrangian dual problem sometimes easier to solve (simpler constraints).
+          </p>
+        </div>
+
+        <div class="container p-3 my-3 border" id="GradientDescentMethod">
+          <h1>Gradient Descent Method</h1>
+          <p>Gradient descent is a first-order iterative optimization algorithm for finding a local minimum of a differentiable objective function \(f(x)\).
+          <br>The method is to find a local minimum by iteratively moving in the steepest descent direction \(\Delta x\) as defined by the negative gradient \(-\nabla f(x)\).
+          <br> \(x_{k+1} = x_k - t_k \nabla f(x_k)\)
+          <br>and \(f(x_{k+1}) < f(x_k)\) except when \(x_k\) is optimal.
+          <br>Here, k = 0, 1, ... denotes the iteration number. The scalar \(t_k \ge 0\) is called the step size or step length at iteration k.
+          <br>
+          <br>The outline of a general descent method is as follow:
+          <br>Given a starting point \(x_0 \in dom(f)\).
+          <br>Repeat
+          <br> &nbsp &nbsp &nbsp &nbsp 1. Determine a descent direction \(\Delta x\).
+          <br> &nbsp &nbsp &nbsp &nbsp 2. Line search. Choose a step size \(t > 0\).
+          <br> &nbsp &nbsp &nbsp &nbsp 3. Update. \(x = x + t\Delta x\).
+          <br>Until stopping criterion is satisfied.
+          <br> Step size t can be determined by backtracking line search or exact line serach.
+          </p>
+          <h3>Convergence Theorem for Fixed Step Size</h3>
+          <p>Suppose \(f:R^d \to R\) is convex and differentiable, and \(\nabla f\) is Lipschitz continuous with constant \(L > 0\),
+          <br> \(||\nabla f(x) - \nabla f(y)|| \le L||x-y||\)
+          <br> for any \(x, y \in R^d\). Then gradient descent with fixed step size \(t \le \frac{1}{L}\) converges.
+          <br> In particular, \(f(x^k) - f(x^*) \le \frac{||x^0-x^*||^2}{2tk}\)
+          </p>
+          <h3>Methods of Speeding up Convergences</h3>
+          <p> With Momentum (exponential moving averages of gradients)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( V_{k} = \beta V_{k-1} + (1-\beta) \nabla f(x_{k}) \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - t V_{k} \) &nbsp (\(V\) initialised to 0, default value: \( \beta=0.9 \))
+          <br> Nesterov Accelerated Gradient (NAG)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( V_{k} = \beta V_{k-1} + (1-\beta) \nabla f(x_{k} - t V_{k-1}) \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - t V_{k} \) &nbsp (\(V\) initialised to 0, default value: \( \beta=0.9 \))
+          <br> Adaptive Moment Estimation (Adam)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( V_{k} = \beta_{1} V_{k-1} + (1-\beta_{1}) \nabla f(x_{k}) \) &nbsp (From Momentum)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( S_{k} = \beta_{2} S_{k-1} + (1-\beta_{2}) \nabla f(x_{k})^{2} \) &nbsp (From RMSProp -- one adaptive learning rate)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - \frac{t}{\sqrt{S_{k}+\epsilon}} V_{k} \) &nbsp (\(V\) and \(S\) initialised to 0, default values: \( \beta_{1}=0.9, \beta_{2}=0.99, \epsilon=10^{-8} \))
+          </p>
+        </div>
+
+        <div class="container p-3 my-3 border" id="ProximalGradientMethod">
+          <h1>Proximal Gradient Method</h1>
+          <h3>Proximal Operator</h3>
+          <p>
+          proximal operator of \( f : R^n \rightarrow R \cup \{ +\infty \} \) is
+          <br>&nbsp &nbsp &nbsp &nbsp \(prox_{\lambda f}(v) = {\arg\min\limits_{x}}(f(x) + \frac{1}{2 \lambda}||x-v||^2_2)\)
+          <br>with parameter \( \lambda > 0 \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\(f\) may be nonsmooth, have embedded constraints, ...
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>evaluating \(prox_{f}\) involves solving a convex optimization problem
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>can evaluate via standard methods like BFGS, but very often has an analytical solution or simple specialized linear-time algorithm
+          </p>
+          <h3>Soft-thresholding Operator</h3>
+          <p> Soft-thresholding operator is one form of proximal operator. It's just the proximal mapping of the L1-norm.
+          <br>Let \(f(x)=||x||_1\), then the proximal mapping of \(f(x)\) is defined as
+          <br> &nbsp &nbsp &nbsp &nbsp \(prox_{\lambda f}(v) = {\arg\min\limits_{x}}(||x||_1 + \frac{1}{2 \lambda}||x-v||^2_2)\)
+          <br> with parameter \(\lambda > 0\).
+          <br> Here \(f(x)=||x||_1\) is not differentiable, but we can have the following expression by using subgradient.
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> if \(x_i \ne 0\), then \(v_i - x_i = \lambda sign(x_i)\)
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> if \(x_i = 0\), then \( |v_i - x_i| \le \lambda \)
+          <br> Then we can have the following analytical solution.
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> if \(v_i > \lambda\), then \(x_i = v_i - \lambda\)
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> if \(-\lambda \le v_i \le \lambda \), then \(x_i = 0\)
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> if \(v_i < - \lambda\), then \(x_i = v_i + \lambda\)
+          </p>
+          <h3>Proximal Gradient</h3>
+          <p>
+          &nbsp &nbsp &nbsp &nbsp minimize \( f(x) + g(x) \)
+          <br>\(f\) is smooth
+          <br>\(g : R^n \rightarrow R \cup \{ +\infty \}\) is closed proper convex
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>method: \( x^{k+1} = prox_{\lambda^kg}(x^k-\lambda^k\nabla f(x^k)) \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>converges with rate \(O(1/k)\) when \(\nabla f\) is Lipschitz continuous with constant \(L\) and step sizes are \( \lambda^k=\lambda \in (0, 1/L] \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>special case: projected gradient method (take \(g = I_C\) -- indicator function of set \(C\) )
+          </p>
+        </div>
+
+        <div class="container p-3 my-3 border" id="ADMM">
+          <h1>ADMM (Alternating Direction Method of Multipliers)</h1>
+          <h3>Unconstrained Minimization</h3>
+          <p>
+          &nbsp &nbsp &nbsp &nbsp minimize \( f(x) + g(x) \)
+          <br> \(f, g : R^n \rightarrow R \cup \{ +\infty \}\) are closed proper convex
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>method:
+          <br>&nbsp &nbsp &nbsp &nbsp \( x^{k+1} = prox_{\lambda f}(z^k-u^k) \)
+          <br>&nbsp &nbsp &nbsp &nbsp \( z^{k+1} = prox_{\lambda g}(x^{k+1}+u^k) \)
+          <br>&nbsp &nbsp &nbsp &nbsp \( u^{k+1} = u^k+x^{k+1}-z^{k+1}) \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>basically, always works and has \(O(\frac{1}{k})\) rate in general
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>if \(f\) and \(g\) are both indicators, get a variation on alternating projections  
+          </p>
+          <h3>Constrained Minimization</h3>
+          <p>
+          <span style='font-size:20px; color:blue'>&#9656;</span>ADMM problem form (with \(f, g\) convex)
+          <br>&nbsp &nbsp &nbsp &nbsp minimize \( f(x) + g(z) \)
+          <br>&nbsp &nbsp &nbsp &nbsp subject to \( Ax+Bz=c \)
+          <br> - two sets of variables, with separable objective
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( L_{\rho}(x,z,y)=f(x)+g(z)+y^{\top}(Ax+Bz-c)+\frac{\rho}{2}||Ax+Bz-c||^2_2 \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>ADMM:
+          <br>&nbsp &nbsp &nbsp &nbsp \( x^{k+1} = {\arg\min\limits_{x}}L_{\rho}(x,z^k,y^k) \)
+          <br>&nbsp &nbsp &nbsp &nbsp \( z^{k+1} = {\arg\min\limits_{z}}L_{\rho}(x^{k+1},z,y^k) \)
+          <br>&nbsp &nbsp &nbsp &nbsp \( y^{k+1} = y^k + \rho(Ax^{k+1}+Bz^{k+1}-c) \)
+          </p>
+          <h3>Scaled Dual Variables</h3>
+          <p>
+          <span style='font-size:20px; color:blue'>&#9656;</span>combine linear and quadratic terms in augmented Lagrangian
+          <br> \( L_{\rho}(x,z,y)=f(x)+g(z)+y^{\top}(Ax+Bz-c)+\frac{\rho}{2}||Ax+Bz-c||^2_2 \)
+          <br> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp \( = f(x)+g(z)+\frac{\rho}{2}||Ax+Bz-c+u||^2_2+const \)
+          <br> with \( u^k = \frac{y^k}{\rho} \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>ADMM (scaled dual form):
+          <br>&nbsp &nbsp &nbsp &nbsp \( x^{k+1} = {\arg\min\limits_{x}}(f(x)+\frac{\rho}{2}||Ax+Bz^k-c+u^k||^2_2) \)
+          <br>&nbsp &nbsp &nbsp &nbsp \( z^{k+1} = {\arg\min\limits_{z}}(g(z)+\frac{\rho}{2}||Ax^{k+1}+Bz-c+u^k||^2_2) \)
+          <br>&nbsp &nbsp &nbsp &nbsp \( u^{k+1} = u^k + (Ax^{k+1}+Bz^{k+1}-c) \)
+          </p>
+        </div>
+        
+        <div class="container p-3 my-3 border" id="References">
+          <h1>References</h1>
+          <a href="http://cvxr.com/cvx/" target="_blank">CVX: Matlab Software for Disciplined Convex Programming</a>
+          <br>
+          <a href="https://www.cvxpy.org/" target="_blank">Convex Optimization in Python with CVXPY</a>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
