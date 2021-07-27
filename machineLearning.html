@@ -33,6 +33,9 @@
   #CNN{
     scroll-margin-top: 80px;
   }
+  #AutomaticDifferentiation{
+    scroll-margin-top: 80px;
+  }
   </style>
 </head>
 
@@ -71,6 +74,7 @@
             <li><a href="#SVM">SVM</a></li>
             <li><a href="#PCA">PCA</a></li>
             <li><a href="#CNN">CNN</a></li>
+            <li><a href="#AutomaticDifferentiation">Auto Differentiation</a></li>
             <li><a href="#References">References</a></li>
             <li><a href="#BackToTop">Back To Top</a></li>
           </ul>
@@ -241,6 +245,32 @@ class Model(nn.Module):<span style="color:blue">
         ...
 </pre>
           </p>  
+        </div>
+
+        <div class="container p-3 my-3 border" id="AutomaticDifferentiation">
+          <h1>Automatic Differentiation</h1>
+          <p>
+          <h3>Computation Graph</h3>
+          <img src="autodiff1.png" width="600" height="100">
+          <br>
+          <br>
+          Form the perspective of software, instead of using function notation we usually see, it is convenient to use graphy notation for describing a neural-network architecture.
+          A neural-network layer should be an object instantiated from a predefined network-layer class, which has useful methods to automatically compute outputs given inputs.
+          A neural-network architecture is constructed by stacking these modular network-layer objects together.
+          Forward-pass mode is going to automatically compute activations \(a_1...a_L\) then \(loss(a_L,y)\), while backward-pass mode is going to automatically compute first-derivatives \(\frac{\partial L}{\partial W_1}...\frac{\partial L}{\partial W_L},\frac{\partial L}{\partial b_1}...\frac{\partial L}{\partial b_L}\)
+          then model parameters \(W_1...W_L,b_1...b_L\).
+          The neural-network model parameters are optimized through some gradient-based iterative algorithm.
+          <br>
+          <br>
+          <h3>Modular Network Layer</h3>
+          <img src="autodiff2.png" width="350" height="160">
+          <br>
+          \( parameter = \{W_1:[ ],b_1:[ ]...W_L:[ ],b_L:[ ]\} \)
+          <br>
+          \( gradient =  \{\frac{\partial L}{\partial W_1}:[ ],\frac{\partial L}{\partial b_1}:[ ]...\frac{\partial L}{\partial W_L}:[ ],\frac{\partial L}{\partial b_L}:[ ]\} \)
+          <br>
+          \( cache = \{a_1:[ ]...a_L:[ ]\} \)
+          </p>
         </div>
 
         <div class="container p-3 my-3 border" id="References">
