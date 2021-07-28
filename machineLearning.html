@@ -251,25 +251,27 @@ class Model(nn.Module):<span style="color:blue">
           <h1>Automatic Differentiation</h1>
           <p>
           <h3>Computation Graph</h3>
-          <img src="autodiff1.png" width="600" height="100">
+          <img src="autodiff1.png" width="500" height="80">
           <br>
           <br>
-          Form the perspective of software, instead of using function notation we usually see, it is convenient to use graphy notation for describing a neural-network architecture.
-          A neural-network layer should be an object instantiated from a predefined network-layer class, which has useful methods to automatically compute outputs given inputs.
-          A neural-network architecture is constructed by stacking these modular network-layer objects together.
-          Forward-pass mode is going to automatically compute activations \(a_1...a_L\) then \(loss(a_L,y)\), while backward-pass mode is going to automatically compute first-derivatives \(\frac{\partial L}{\partial W_1}...\frac{\partial L}{\partial W_L},\frac{\partial L}{\partial b_1}...\frac{\partial L}{\partial b_L}\)
-          then model parameters \(W_1...W_L,b_1...b_L\).
-          The neural-network model parameters are optimized through some gradient-based iterative algorithm.
+          From the perspective of software, instead of using function notation we usually see, it is convenient to use graph notation for describing a neural-network-architecture.
+          A neural-network-layer should be an object instantiated from a predefined neural-network-layer class, which has encapsulated useful methods to automatically compute outputs given inputs.
+          Then a neural-network-architecture is constructed by stacking these modular neural-network-layer objects together.
+          Forward-pass mode (from left to right) is going to automatically compute the activations \(a_1...a_L\)
+		  then evaluate the loss function \(loss(a_L,y)\),
+		  while backward-pass mode (from right to left) is going to automatically compute the first-derivatives \(\frac{\partial L}{\partial W_1},\frac{\partial L}{\partial b_1}...\frac{\partial L}{\partial W_L},\frac{\partial L}{\partial b_L}\)
+          then update the model parameters \(W_1,b_1...W_L,b_L\).
+          In the end, the neural-network model is trained by optimizing the model parameters through some gradient-based iterative algorithm.
           <br>
           <br>
           <h3>Modular Network Layer</h3>
-          <img src="autodiff2.png" width="350" height="160">
+          <img src="autodiff2.png" width="280" height="130">
           <br>
-          \( parameter = \{W_1:[ ],b_1:[ ]...W_L:[ ],b_L:[ ]\} \)
+          Parameter: \( \{W_1,b_1...W_L,b_L\} \)
           <br>
-          \( gradient =  \{\frac{\partial L}{\partial W_1}:[ ],\frac{\partial L}{\partial b_1}:[ ]...\frac{\partial L}{\partial W_L}:[ ],\frac{\partial L}{\partial b_L}:[ ]\} \)
+          Gradient: \( \{\frac{\partial L}{\partial W_1},\frac{\partial L}{\partial b_1}...\frac{\partial L}{\partial W_L},\frac{\partial L}{\partial b_L}\} \)
           <br>
-          \( cache = \{a_1:[ ]...a_L:[ ]\} \)
+          Cache: \( \{a_1...a_L\} \)
           </p>
         </div>
 
