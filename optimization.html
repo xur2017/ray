@@ -12,27 +12,37 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
   <style>
-  #navbarV {
-    position: fixed;
-  }
-  body { 
-    padding-top: 60px;
-  }
-  #ConvexOptimizationProblem{
-    scroll-margin-top: 80px;
-  }
-  #Lagrangian{
-    scroll-margin-top: 80px;
-  }
-  #GradientDescentMethod{
-    scroll-margin-top: 80px;
-  }
-  #ProximalGradientMethod{
-    scroll-margin-top: 80px;
-  }
-  #ADMM{
-    scroll-margin-top: 80px;
-  }
+    body { 
+      padding-top: 60px;
+    }
+    #sidenav {
+      position: fixed;
+      width: 170px;
+      background: #eee;
+    }
+    #ConvexOptimizationProblem{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #Lagrangian{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #GradientDescentMethod{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #ProximalGradientMethod{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #ADMM{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #References{
+      background: #eee;
+    }
   </style>
 </head>
 
@@ -64,16 +74,14 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        <div id="navbarV">
-          <ul>
-            <li><a href="#ConvexOptimizationProblem">Optimization Problem</a></li>
-            <li><a href="#Lagrangian">Lagrangian</a></li>
-            <li><a href="#GradientDescentMethod">Gradient Descent</a></li>
-            <li><a href="#ProximalGradientMethod">Proximal Gradient</a></li>
-            <li><a href="#ADMM">ADMM</a></li>
-            <li><a href="#References">References</a></li>
-            <li><a href="#BackToTop">Back To Top</a></li>
-          </ul>
+        <div class="container p-3 my-3" id="sidenav">
+          <a href="#ConvexOptimizationProblem">Problem Statement</a><br>
+          <a href="#Lagrangian">Lagrangian</a><br>
+          <a href="#GradientDescentMethod">Gradient Descent</a><br>
+          <a href="#ProximalGradientMethod">Proximal Gradient</a><br>
+          <a href="#ADMM">ADMM</a><br>
+          <a href="#References">References</a><br>
+          <a href="#BackToTop">Back To Top</a>
         </div>
       </div>
       <div class="col-sm-10">
@@ -84,6 +92,13 @@
           <br>&nbsp &nbsp &nbsp &nbsp minimize \( f_0(x) \)
           <br>&nbsp &nbsp &nbsp &nbsp subject to \( f_i(x) \le 0, i = 1,...,m \)
           <br>where \( f_0(x),...,f_m((x) \) are convex functions.
+          <br>For examples:
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>Linear Programming:
+          <br>&nbsp &nbsp &nbsp &nbsp minimize  \( c^Tx \)
+          <br>&nbsp &nbsp &nbsp &nbsp subject to \( Ax \leq b \)
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>Quadratic Programming:
+          <br>&nbsp &nbsp &nbsp &nbsp minimize  \( \frac{1}{2}x^TQx+c^Tx \)
+          <br>&nbsp &nbsp &nbsp &nbsp subject to \( Ax \leq b \) and/or \( Ex = d \)
           <br>
           <br>
           <h3>Implicit Form</h3>

@@ -12,30 +12,41 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
-  #navbarV {
-    position: fixed;
-  }
-  body { 
-    padding-top: 60px;
-  }
-  #NaiveBayesClassifier{
-    scroll-margin-top: 80px;
-  }
-  #LogisticRegression{
-    scroll-margin-top: 80px;
-  }
-  #SVM{
-    scroll-margin-top: 80px;
-  }
-  #PCA{
-    scroll-margin-top: 80px;
-  }
-  #CNN{
-    scroll-margin-top: 80px;
-  }
-  #AutomaticDifferentiation{
-    scroll-margin-top: 80px;
-  }
+    body { 
+      padding-top: 60px;
+    }
+    #sidenav {
+      position: fixed;
+      width: 170px;
+      background: #eee;
+    }
+    #NaiveBayesClassifier{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #LogisticRegression{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #SVM{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #PCA{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #CNN{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #AutomaticDifferentiation{
+      scroll-margin-top: 80px;
+      background: #eee;
+    }
+    #References{
+      background: #eee;
+    }
   </style>
 </head>
 
@@ -67,17 +78,15 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        <div id="navbarV">
-          <ul>
-            <li><a href="#NaiveBayesClassifier">Naive Bayes Classifier</a></li>
-            <li><a href="#LogisticRegression">Logistic Regression</a></li>
-            <li><a href="#SVM">SVM</a></li>
-            <li><a href="#PCA">PCA</a></li>
-            <li><a href="#CNN">CNN</a></li>
-            <li><a href="#AutomaticDifferentiation">AutoDifferentiation</a></li>
-            <li><a href="#References">References</a></li>
-            <li><a href="#BackToTop">Back To Top</a></li>
-          </ul>
+        <div class="container p-3 my-3" id="sidenav">
+          <a href="#NaiveBayesClassifier">Naive Bayes</a><br>
+          <a href="#LogisticRegression">Logistic Regression</a><br>
+          <a href="#SVM">SVM</a><br>
+          <a href="#PCA">PCA</a><br>
+          <a href="#CNN">CNN</a><br>
+          <a href="#AutomaticDifferentiation">AutoDifferentiation</a><br>
+          <a href="#References">References</a><br>
+          <a href="#BackToTop">Back To Top</a>
         </div>
       </div>
       <div class="col-sm-10">

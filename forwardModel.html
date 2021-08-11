@@ -12,20 +12,25 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
-    #navbarV {
-      position: fixed;
-    }
     body { 
       padding-top: 60px;
     }
+    #sidenav {
+      position: fixed;
+      width: 170px;
+      background: #eee;
+    }
     #ProblemStatement{
       scroll-margin-top: 80px;
+      background: #eee;
     }
     #QuantumMechanics{
       scroll-margin-top: 80px;
+      background: #eee;
     }
     #Electrodynamics{
       scroll-margin-top: 80px;
+      background: #eee;
     }
   </style>
 </head>
@@ -58,17 +63,15 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
-        <div id="navbarV">
-          <ul>
-            <li><a href="#ProblemStatement">Problem Statement</a></li>
-            <li><a href="#QuantumMechanics">Electron Interaction</a></li>
-            <li><a href="#Electrodynamics">X-ray Interaction</a></li>
-            <li><a href="#BackToTop">Back To Top</a></li>
-          </ul>
+        <div class="container p-3 my-3" id="sidenav">
+          <a href="#ProblemStatement">Problem Statement</a><br>
+          <a href="#QuantumMechanics">Electron Interaction</a><br>
+          <a href="#Electrodynamics">X-ray Interaction</a><br>
+          <a href="#BackToTop">Back To Top</a>
         </div>
       </div>
       <div class="col-sm-10">
-        <div  class="container p-3 my-3 border" id="ProblemStatement">
+        <div class="container p-3 my-3 border" id="ProblemStatement">
           <h1>Problem Statement</h1>
           <h3>Hardware Design</h3>
           (a)<img src="stem1.jpg" width="250" height="200">
@@ -110,7 +113,7 @@
           For instances, the imaging system (a) above is guided by <a href="#QuantumMechanics"><b>Quantum Mechanics</b></a>, the imaging system (b) above is guided by <a href="#Electrodynamics"><b>Electrodynamics</b></a>.
           <h3>Parameterized Forward Model</h3>
           Depending on applications, forward model is not necessarily associated with a particular hardware system and physical process.
-          It can be just a mathematical hypothesis like linear regression model \(y=f(\beta,x)=\beta^T x\), logistic regression model \(y=f(\beta,x)=\sigma(\beta^T x\)) where \(\sigma\) is logistic function, neural network model \(y=f(W_1...W_L,b_1...b_L,x)\) and so on.
+          It can be just a mathematical hypothesis like linear regression model \(y=f(\beta,x)=\beta^T x\), logistic regression model \(y=f(\beta,x)=\sigma(\beta^T x\)) where \(\sigma\) is logistic function, neural network model \(y=f(W_1,b_1...W_L,b_L,x)\) and so on.
           This mathematical hypothesis aims to explore relationship or correlation between input \(x\) and output \(y\).
           We can collect both input \(x\) and output \(y\) to provide training dataset. Our objective instead is to train the model by optimizing its parameters like \(\beta\), so that at a good accuracy the model hopefully is able to estimate or predict output \(y\) with new input \(x\).
           Solving such a <b>Modeling Problem</b> is closely related to the framework of <a href="machineLearning.html"><b>Machine Learning Probelm</b></a>.
