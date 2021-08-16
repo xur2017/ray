@@ -12,35 +12,16 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
   <style>
-    body { 
+    body{ 
       padding-top: 60px;
     }
-    #sidenav {
+    #sidenav{
       position: fixed;
       width: 170px;
       background: #eee;
     }
-    #ConvexOptimizationProblem{
+    #ConvexOptimizationProblem, #Lagrangian, #GradientDescentMethod, #ProximalGradientMethod, #ADMM, #References{
       scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #Lagrangian{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #GradientDescentMethod{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #ProximalGradientMethod{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #ADMM{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #References{
       background: #eee;
     }
   </style>
@@ -93,10 +74,10 @@
           <br>&nbsp &nbsp &nbsp &nbsp subject to \( f_i(x) \le 0, i = 1,...,m \)
           <br>where \( f_0(x),...,f_m((x) \) are convex functions.
           <br>For examples:
-          <br><span style='font-size:20px; color:blue'>&#9656;</span>Linear Programming:
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>Linear Programming (LP):
           <br>&nbsp &nbsp &nbsp &nbsp minimize  \( c^Tx \)
           <br>&nbsp &nbsp &nbsp &nbsp subject to \( Ax \leq b \)
-          <br><span style='font-size:20px; color:blue'>&#9656;</span>Quadratic Programming:
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>Quadratic Programming (QP):
           <br>&nbsp &nbsp &nbsp &nbsp minimize  \( \frac{1}{2}x^TQx+c^Tx \)
           <br>&nbsp &nbsp &nbsp &nbsp subject to \( Ax \leq b \) and/or \( Ex = d \)
           <br>

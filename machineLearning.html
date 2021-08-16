@@ -12,39 +12,16 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
-    body { 
+    body{ 
       padding-top: 60px;
     }
-    #sidenav {
+    #sidenav{
       position: fixed;
       width: 170px;
       background: #eee;
     }
-    #NaiveBayesClassifier{
+    #NaiveBayesClassifier, #LogisticRegression, #SVM, #PCA, #CNN, #AutomaticDifferentiation, #References{
       scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #LogisticRegression{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #SVM{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #PCA{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #CNN{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #AutomaticDifferentiation{
-      scroll-margin-top: 80px;
-      background: #eee;
-    }
-    #References{
       background: #eee;
     }
   </style>
@@ -117,7 +94,7 @@
           <p>
           The <b>logistic function</b>: \( \sigma(t) = \frac{1}{1+\exp(-t)} = \frac{\exp(t)}{1+\exp(t)} \)
           <br>
-          <img src="logistic1.png" width="300" height="200">
+          <img src="imag/logistic1.png" width="300" height="200">
           <br>
           <br><b>Logistic regression</b>: use the logistic function for modeling \(P(y|x)\), considering only the case of \(y \in \{0,1\}\)
           <br>\( P(y=0|x) = \frac{1}{1+\exp(w_0+\sum_{i=1}^{d}w_ix_i)} = \frac{1}{1+\exp(w^tx)} = 1-\sigma(w^tx) \)
@@ -150,7 +127,7 @@
           <br>\( H_2: w^t x + b = -1 \)
           <br> The region between \( H_1 \) and \( H_2 \) is also called the margin, and its width is \( \frac{2}{||w||} \)
           <br>
-          <img src="svm1.png" width="300" height="290">
+          <img src="imag/svm1.png" width="300" height="290">
           <br>
           <br>
           <h3>Formulating SVM</h3>
@@ -208,7 +185,7 @@
           <br> Better yet: can we learn proper kernels? Part of CNN's objective
           <br>
           <br>
-          <img src="cnn1.png" width="600" height="230">
+          <img src="imag/cnn1.png" width="600" height="230">
           <br> Some conv layers plus some fully-connected layers
           <br> (conv layer: convolution, batchnormalization, activation, pooling)
 <pre>
@@ -260,7 +237,7 @@ class Model(nn.Module):<span style="color:blue">
           <h1>Automatic Differentiation</h1>
           <p>
           <h3>Computation Graph</h3>
-          <img src="autodiff1.png" width="500" height="80">
+          <img src="imag/autodiff1.png" width="500" height="80">
           <br>
           <br>
           From the perspective of software, instead of using function notation we usually see, it is convenient to use graph notation for describing a neural-network-architecture.
@@ -274,7 +251,7 @@ class Model(nn.Module):<span style="color:blue">
           <br>
           <br>
           <h3>Modular Network Layer</h3>
-          <img src="autodiff2.png" width="280" height="130">
+          <img src="imag/autodiff2.png" width="280" height="130">
           <br>
           Parameter: \( \{W_1,b_1...W_L,b_L\} \)
           <br>
