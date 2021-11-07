@@ -20,7 +20,7 @@
       width: 170px;
       background: #eee;
     }
-    #ConvexOptimizationProblem, #Lagrangian, #GradientDescentMethod, #ProximalGradientMethod, #ADMM, #References{
+    #ConvexOptimizationProblem, #Lagrangian, #GradientDescentMethod, #ProximalGradientMethod, #ADMM, #Hessian-Based, #References{
       scroll-margin-top: 80px;
       background: #eee;
     }
@@ -61,6 +61,7 @@
           <a href="#GradientDescentMethod">Gradient Descent</a><br>
           <a href="#ProximalGradientMethod">Proximal Gradient</a><br>
           <a href="#ADMM">ADMM</a><br>
+          <a href="#Hessian-Based">Hessian-Based</a><br>
           <a href="#References">References</a><br>
           <a href="#BackToTop">Back To Top</a>
         </div>
@@ -150,14 +151,14 @@
           <h3>Methods of Speeding up Convergences</h3>
           <p> With Momentum (exponential moving averages of gradients)
           <br><span style='font-size:20px; color:blue'>&#9656;</span>\( V_{k} = \beta V_{k-1} + (1-\beta) \nabla f(x_{k}) \)
-          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - t V_{k} \) &nbsp (\(V\) initialised to 0, default value: \( \beta=0.9 \))
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - t V_{k} \) &nbsp (\(V\) initialized to 0, default value: \( \beta=0.9 \))
           <br> Nesterov Accelerated Gradient (NAG)
           <br><span style='font-size:20px; color:blue'>&#9656;</span>\( V_{k} = \beta V_{k-1} + (1-\beta) \nabla f(x_{k} - t V_{k-1}) \)
-          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - t V_{k} \) &nbsp (\(V\) initialised to 0, default value: \( \beta=0.9 \))
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - t V_{k} \) &nbsp (\(V\) initialized to 0, default value: \( \beta=0.9 \))
           <br> Adaptive Moment Estimation (Adam)
           <br><span style='font-size:20px; color:blue'>&#9656;</span>\( V_{k} = \beta_{1} V_{k-1} + (1-\beta_{1}) \nabla f(x_{k}) \) &nbsp (From Momentum)
           <br><span style='font-size:20px; color:blue'>&#9656;</span>\( S_{k} = \beta_{2} S_{k-1} + (1-\beta_{2}) \nabla f(x_{k})^{2} \) &nbsp (From RMSProp -- one adaptive learning rate)
-          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - \frac{t}{\sqrt{S_{k}+\epsilon}} V_{k} \) &nbsp (\(V\) and \(S\) initialised to 0, default values: \( \beta_{1}=0.9, \beta_{2}=0.99, \epsilon=10^{-8} \))
+          <br><span style='font-size:20px; color:blue'>&#9656;</span>\( x_{k+1} = x_{k} - \frac{t}{\sqrt{S_{k}+\epsilon}} V_{k} \) &nbsp (\(V\) and \(S\) initialized to 0, default values: \( \beta_{1}=0.9, \beta_{2}=0.99, \epsilon=10^{-8} \))
           </p>
         </div>
 
@@ -234,6 +235,51 @@
           </p>
         </div>
         
+        <div class="container p-3 my-3 border" id="Hessian-Based">
+          <h1>Hessian-Based Methods</h1>
+          <h3>Newton Method</h3>
+          <p>
+          Let's assume \( f(x) \) can be locally approximated as a quadratic form using first and second derivatives
+          <br> In higher dimensions, Newton method uses gradient vector \( g \) and Hessian matrix \( H \) for finding optimum
+          <br> \( \Delta f \approx g^T \Delta x + \frac{1}{2} \Delta x^T H \Delta x \)  
+          <br> \( H \Delta x = -g \)
+          <br> In order to update \( x \), each iteration we need to solve the above linear equations for getting \( \Delta x \)
+          </p>
+          <h3>Quasi-Newton Method</h3>
+          <p>
+          Hessian matrix \( H \) is often too expensive to use in practical applications
+          <br> In Quasi-Newton method its approximation \( B \) is computed by analyzing successive gradient vectors instead
+          <br> \( \Delta g \approx H \Delta x \)
+          <br> Let \( y_k = g_{k+1} - g_k \) and \( s_k = x_{k+1} - x_k \)
+          <br> \( B_{k+1} s_k = y_k \)
+          <br> Each iteration we need to construct \( B \) that satisfy the above linear equations 
+          <br> For examples:
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> BFGS algorithm: \( B_{k+1} = B_k + \frac{y_k y_k^T}{y_k^T s_k} - \frac{B_k s_k (B_k s_k)^T}{s_k^T B_k s_k} \) &nbsp (\(B_0\) initialized to \( I \))
+          </p>
+          <h3>Guass-Newton Method</h3>
+          <p>
+          minimize \( \frac{1}{2} ||f(x)||^2 = \frac{1}{2} f(x)^T f(x) \)
+          <br> Let's reformulate it as the following form
+          <br> \( f(x + \Delta x) \approx f(x) + J(x) \Delta x \) locally defining a linear approximation
+          <br> minimize \( \frac{1}{2} ||f(x) + J(x) \Delta x||^2 \)
+          <br> \( J(x)^T J(x) \Delta x = - J(x)^T f(x) \)
+          <br> \( H \Delta x = g \)
+          <br> Each iteration we need to compute \( J^T J \) that approximate \( H \)
+          </p>
+          <h3>Levenberg–Marquardt Method</h3>
+          <p>
+          minimize \( \frac{1}{2} ||f(x) + J(x) \Delta x||^2 \)
+          <br> subject to \( ||D \Delta x||^2 \leq \mu \) locally defining a trust-region
+          <br> Let's reformulate it as the following form
+          <br> minimize \( \frac{1}{2} ||f(x) + J(x) \Delta x||^2 + \frac{\lambda}{2}||D \Delta x||^2\)
+          <br> \( (H + \lambda D^T D) \Delta x = g \)
+          <br> If we constrain \( \Delta x \) within a sphere, then \( D \) is identity matrix \( I \)
+          <br> \( (H + \lambda I) \Delta x = g \)
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> If \( \lambda \) is relatively small, L-M method become closer to Gauss-Newton method
+          <br> <span style='font-size:20px; color:blue'>&#9656;</span> If \( \lambda \) is relatively large, L-M method become closer to Gradient Descent method
+          </p>
+        </div>
+
         <div class="container p-3 my-3 border" id="References">
           <h1>References</h1>
           <a href="http://cvxr.com/cvx/" target="_blank">CVX: Matlab Software for Disciplined Convex Programming</a>
