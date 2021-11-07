@@ -236,7 +236,7 @@
         </div>
         
         <div class="container p-3 my-3 border" id="Hessian-Based">
-          <h1>Hessian-Based Methods</h1>
+          <h1>Hessian-Based Method</h1>
           <h3>Newton Method</h3>
           <p>
           Let's assume \( f(x) \) can be locally approximated as a quadratic form using first and second derivatives
@@ -256,11 +256,11 @@
           <br> For examples:
           <br> <span style='font-size:20px; color:blue'>&#9656;</span> BFGS algorithm: \( B_{k+1} = B_k + \frac{y_k y_k^T}{y_k^T s_k} - \frac{B_k s_k (B_k s_k)^T}{s_k^T B_k s_k} \) &nbsp (\(B_0\) initialized to \( I \))
           </p>
-          <h3>Guass-Newton Method</h3>
+          <h3>Gauss-Newton Method</h3>
           <p>
           minimize \( \frac{1}{2} ||f(x)||^2 = \frac{1}{2} f(x)^T f(x) \)
           <br> Let's reformulate it as the following form
-          <br> \( f(x + \Delta x) \approx f(x) + J(x) \Delta x \) locally defining a linear approximation
+          <br> \( f(x + \Delta x) \approx f(x) + J(x) \Delta x \) locally defining a linear form using Jacobian
           <br> minimize \( \frac{1}{2} ||f(x) + J(x) \Delta x||^2 \)
           <br> \( J(x)^T J(x) \Delta x = - J(x)^T f(x) \)
           <br> \( H \Delta x = g \)
